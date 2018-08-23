@@ -1,0 +1,32 @@
+This is the source code of Asset-Control backend assessment
+
+There is two concurrent operations in the program ,
+first one is TransformService, and second one is FileWriterService
+
+TransformServices works on a maxCPU - 1 threads. These threads making transformation (Filtering , Renaming vs..)
+Benchmarking in different systems may result different outcome , I have just optimized on my machine
+
+FileWriterService works on single thread and it writes the tranformed data to output file
+
+I assume that data file can be very big , but conf files are small enough to hold in memory.
+
+IO operations(Read/Write) works on single thread because the main bottleneck in these operations is Disk IO
+
+I have used Executor Services for multithreading .
+I have used BlockingQueue for data passing between threads
+I have used CountDownLatch in order to check termination
+
+TECH-STACK:
+        Java 8 , Maven , log4j , intellij
+
+
+HOW-TO-WORK :
+        Program takes files locations from argument parameters.
+        Run unit tests and create data , conf files, then you can give these arguments as program parameter.
+        sample arguments: "src/test/resources/bigfile.txt src/test/resources/conf1.txt src/test/resources/conf2.txt src/test/resources/output.txt"
+
+
+TO-DO: need to improve unit test coverage for each method
+       need to improve solution in very large configuration files.
+
+
