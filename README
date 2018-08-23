@@ -1,5 +1,4 @@
-This is the source code of Asset-Control backend assessment
-
+This is the source code of highly effective transforming process
 There is two concurrent operations in the program ,
 first one is TransformService, and second one is FileWriterService
 
